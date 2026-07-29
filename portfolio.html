@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Que Anh Pham | Finance &amp; Impact Investing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo-deep:#17233d;
+    --indigo-ink:#22345a;
+    --paper:#f3efe4;
+    --paper-white:#fbf9f4;
+    --ink:#22262e;
+    --ink-soft:#4b5163;
+    --brass:#b8894a;
+    --brass-soft:#d9b98a;
+    --jade:#556b58;
+    --rule:rgba(23,35,61,0.14);
+    --rule-light:rgba(251,249,244,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper-white);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,249,244,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:14px;padding-bottom:14px;
+  }
+  nav .brand{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;
+  }
+  nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0;}
+  nav a{
+    font-size:0.82rem;text-decoration:none;color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em;
+  }
+  nav a:hover{color:var(--brass);}
+  @media (max-width:640px){ nav ul{gap:14px;} nav ul li:nth-child(3),nav ul li:nth-child(4){display:none;} }
+
+  /* HERO */
+  header.hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 15% -10%, var(--indigo-ink) 0%, var(--indigo-deep) 55%, #101a30 100%);
+    color:var(--paper-white);
+    overflow:hidden;
+    padding:96px 0 64px;
+  }
+  header.hero .profile{
+    display:flex;align-items:center;gap:22px;margin-bottom:36px;
+  }
+  .avatar{
+    width:64px;height:64px;border-radius:50%;
+    flex-shrink:0;overflow:hidden;
+    border:2px solid var(--brass);
+    box-shadow:0 0 0 4px rgba(184,137,74,0.15);
+  }
+  .avatar img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 22%;
+    display:block;
+  }
+  header.hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    line-height:1.05;
+    max-width:14ch;
+    color:var(--paper-white);
+  }
+  header.hero .role{
+    font-family:'IBM Plex Mono',monospace;font-size:0.95rem;color:var(--brass-soft);
+    margin-top:6px;
+  }
+  header.hero .thesis{
+    max-width:56ch;font-size:1.12rem;color:#dfe3ec;margin-top:26px;
+  }
+  header.hero .tags{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;
+  }
+  header.hero .tags span{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;
+    border:1px solid var(--rule-light);border-radius:999px;
+    padding:6px 13px;color:#cfd5e2;
+  }
+  .contour-hero{
+    position:absolute;left:0;right:0;bottom:-2px;width:100%;height:auto;opacity:0.55;
+  }
+
+  /* SECTION shell */
+  section{padding:72px 0;}
+  section.alt{background:var(--paper);}
+  .section-head{margin-bottom:36px;}
+  .section-head h2{font-size:1.7rem;}
+  .section-head .eyebrow{display:block;margin-bottom:8px;}
+
+  /* JOURNEY / elevation profile */
+  .journey-intro{max-width:62ch;font-size:1.05rem;color:var(--ink-soft);margin-bottom:8px;}
+  .elevation{width:100%;height:auto;margin:36px 0 8px;}
+  .waypoints{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px;
+  }
+  .waypoint .wp-label{
+    font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--brass);
+    letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;display:block;
+  }
+  .waypoint h3{font-size:1.05rem;margin-bottom:8px;}
+  .waypoint p{font-size:0.94rem;color:var(--ink-soft);margin:0;}
+  @media (max-width:760px){ .waypoints{grid-template-columns:1fr;gap:30px;} }
+
+  .thesis-close{
+    margin-top:48px;padding:28px 30px;border-left:3px solid var(--brass);
+    background:var(--paper-white);
+    font-family:'Fraunces',serif;font-size:1.2rem;font-weight:450;
+    color:var(--indigo-deep);line-height:1.5;
+  }
+
+  /* EXPERIENCE */
+  .job{
+    display:grid;grid-template-columns:150px 1fr;gap:28px;
+    padding:26px 0;border-top:1px solid var(--rule);
+  }
+  .job:last-child{border-bottom:1px solid var(--rule);}
+  .job .when{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--jade);padding-top:3px;}
+  .job h3{font-size:1.12rem;}
+  .job .org{font-size:0.9rem;color:var(--ink-soft);margin-top:2px;margin-bottom:12px;}
+  .job ul{margin:0;padding-left:18px;}
+  .job li{margin-bottom:8px;font-size:0.95rem;}
+  .job li b{color:var(--indigo-deep);}
+  @media (max-width:640px){ .job{grid-template-columns:1fr;gap:8px;} }
+
+  /* EDUCATION */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .edu-card{background:var(--paper-white);border:1px solid var(--rule);border-radius:4px;padding:24px;}
+  .edu-card .when{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--jade);}
+  .edu-card h3{font-size:1.05rem;margin:8px 0 4px;}
+  .edu-card .org{font-size:0.9rem;color:var(--ink-soft);}
+  .edu-card .gpa{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;margin-top:10px;color:var(--brass);}
+  .edu-card .focus{font-size:0.86rem;color:var(--ink-soft);margin-top:8px;}
+  @media (max-width:640px){ .edu-grid{grid-template-columns:1fr;} }
+
+  /* EXPERTISE */
+  .exp-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .exp-group .eyebrow{margin-bottom:10px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-size:0.82rem;background:var(--paper-white);border:1px solid var(--rule);
+    border-radius:999px;padding:6px 12px;
+  }
+  .lang-row{display:flex;justify-content:space-between;font-size:0.9rem;padding:6px 0;border-bottom:1px dashed var(--rule);}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-level{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--jade);}
+  @media (max-width:760px){ .exp-groups{grid-template-columns:1fr;} }
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .proj-card{background:var(--paper-white);border:1px solid var(--rule);border-radius:4px;padding:24px;}
+  .proj-card .icon{font-size:1.3rem;}
+  .proj-card h3{font-size:1.02rem;margin:10px 0 8px;}
+  .proj-card p{font-size:0.9rem;color:var(--ink-soft);margin:0;}
+  @media (max-width:640px){ .proj-grid{grid-template-columns:1fr;} }
+
+  /* CONNECT */
+  footer.connect{
+    background:var(--indigo-deep);color:var(--paper-white);padding:64px 0 48px;
+  }
+  footer.connect h2{color:var(--paper-white);font-size:1.9rem;max-width:16ch;}
+  footer.connect .loc{font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--brass-soft);margin-top:10px;}
+  .connect-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px;}
+  .connect-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:0.85rem;
+    border:1px solid var(--rule-light);border-radius:999px;padding:10px 18px;
+    text-decoration:none;color:var(--paper-white);
+  }
+  .connect-links a:hover{border-color:var(--brass);color:var(--brass-soft);}
+  footer.connect .phone{margin-top:24px;font-size:0.85rem;color:#aeb5c6;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;} }
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Que Anh Pham</div>
+    <ul>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="profile">
+      <div class="avatar"><img src="profile.jpg" alt="Que Anh Pham"></div>
+      <div>
+        <span class="eyebrow">Impact Finance · Public Affairs · Investor Relations</span>
+      </div>
+    </div>
+    <h1>Connecting capital with inclusive development.</h1>
+    <div class="role">Finance &amp; Analytics · Strategy · Impact Investing</div>
+    <p class="thesis">Finance professional with hands-on experience in investment research, M&amp;A strategy, and financial modeling — now focused on how capital, deployed with discipline, can produce measurable, inclusive development outcomes.</p>
+    <div class="tags">
+      <span>M&amp;A Analysis</span>
+      <span>Financial Modeling</span>
+      <span>Impact Investing</span>
+      <span>Strategic Advisory</span>
+      <span>Python · SQL · R</span>
+    </div>
+  </div>
+  <svg class="contour-hero" viewBox="0 0 1200 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,140 C120,120 160,150 260,110 C340,80 380,130 460,100 C540,70 580,120 660,95 C740,70 780,110 860,80 C940,50 1000,95 1080,70 C1130,55 1170,75 1200,60 L1200,160 L0,160 Z" fill="#0d1526" opacity="0.6"/>
+    <path d="M0,150 C110,135 170,158 250,128 C330,100 390,140 470,118 C550,96 600,132 680,112 C760,92 810,120 890,100 C970,80 1020,112 1100,92 C1140,82 1170,96 1200,86 L1200,160 L0,160 Z" fill="#0a1120" opacity="0.8"/>
+  </svg>
+</header>
+
+<section id="journey" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why Impact Investing</span>
+      <h2>What draws me to this work</h2>
+    </div>
+    <p class="journey-intro">What draws me most to this field is the opportunity to connect capital with inclusive, measurable development outcomes — a conviction shaped less in the classroom than on the ground, across three moments over the past year.</p>
+
+    <svg class="elevation" viewBox="0 0 900 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,110 C60,105 90,60 150,55 C210,50 240,90 300,85 C360,80 400,30 460,28 C520,26 550,70 610,65 C670,60 710,20 770,18 C820,16 850,45 900,40" fill="none" stroke="#b8894a" stroke-width="2.5"/>
+      <circle cx="150" cy="55" r="5" fill="#17233d" stroke="#b8894a" stroke-width="2"/>
+      <circle cx="460" cy="28" r="5" fill="#17233d" stroke="#b8894a" stroke-width="2"/>
+      <circle cx="770" cy="18" r="5" fill="#17233d" stroke="#b8894a" stroke-width="2"/>
+    </svg>
+
+    <div class="waypoints">
+      <div class="waypoint">
+        <span class="wp-label">Hanoi</span>
+        <h3>A seat at the planning table</h3>
+        <p>Supporting the Arab Business Council as secretary during the announcement of Hanoi's 100-year master plan gave me a close view of long-term development thinking — and how capital decisions made today shape a city for a century.</p>
+      </div>
+      <div class="waypoint">
+        <span class="wp-label">Quang Ninh &amp; Tuyen Quang</span>
+        <h3>Where infrastructure meets livelihood</h3>
+        <p>Site visits to industrial and hydropower projects strengthened my interest in how infrastructure, energy, and investment decisions shape local livelihoods and regional growth — not in the abstract, but on the ground.</p>
+      </div>
+      <div class="waypoint">
+        <span class="wp-label">Northern Highlands</span>
+        <h3>Artisans, children, and inclusive growth</h3>
+        <p>Time in mountainous communities — meeting artisans and children whose lives reflect both the challenges and the potential of inclusive development — showed me how local communities turn traditional products into marketable goods that preserve culture while creating real economic value.</p>
+      </div>
+    </div>
+
+    <p class="thesis-close">That experience made me want to help secure the right capital and support systems so these communities can scale sustainably — which is why I am drawn to joining a global impact fund.</p>
+  </div>
+</section>
+
+<section id="experience" class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Career</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="job">
+      <div class="when">Mar 2025 – Present</div>
+      <div>
+        <h3>Investment, Partnership &amp; Growth Associate</h3>
+        <div class="org">Buymed Group Ltd · Ho Chi Minh City, Vietnam</div>
+        <ul>
+          <li><b>Operational Strategy:</b> Conducted in-depth sector analysis (DCF, three-statement models, due diligence) to identify strategic partnerships and M&amp;A targets.</li>
+          <li><b>Stakeholder Engagement:</b> Prepared pitch decks and investment teasers for VC, PE, and banking engagements to secure working capital.</li>
+          <li><b>Cross-functional Collaboration:</b> Partnered with Sales and Growth teams to align new brand partners with long-term strategic goals.</li>
+          <li><b>Entrepreneurial Leadership:</b> Addressed sector inefficiencies and demand patterns to improve firm accessibility to new projects.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jan 2023 – Jun 2023</div>
+      <div>
+        <h3>Financial Analyst Intern</h3>
+        <div class="org">Battea Class Action Services · New York, USA (Remote)</div>
+        <ul>
+          <li><b>Data-Driven Insights:</b> Used Python and Excel to analyze 100+ securities settlements for accurate forecasting and market validation.</li>
+          <li><b>Risk Management:</b> Analyzed global regulatory trends and fraud risks; presented mitigation strategies to international clients.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jul 2021 – Oct 2021</div>
+      <div>
+        <h3>Investment Strategy Intern</h3>
+        <div class="org">MH Group · Hanoi, Vietnam</div>
+        <ul>
+          <li><b>Financial Operations:</b> Built valuation models and drafted project roadmaps and strategy teasers to raise capital for education-sector projects.</li>
+          <li><b>Multidisciplinary Collaboration:</b> Worked with Marketing, Accounting, and Legal teams to execute complex investment strategies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Academics</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="when">June 2024</div>
+        <h3>M.S. Finance &amp; Analytics</h3>
+        <div class="org">Santa Clara University, CA</div>
+        <div class="gpa">GPA 3.9 / 4.0 · Dean's List</div>
+        <div class="focus">Financial Forecasting, Investment Analysis, M&amp;A, Big Data</div>
+      </div>
+      <div class="edu-card">
+        <div class="when">April 2022</div>
+        <h3>B.B.A. Finance, Banking &amp; International Business</h3>
+        <div class="org">James Cook University, Singapore</div>
+        <div class="gpa">GPA 3.5 / 4.0 · Dean's List</div>
+        <div class="focus">Portfolio Analysis, Risk Management, Credit &amp; Lending</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise" class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Toolkit</span>
+      <h2>Expertise</h2>
+    </div>
+    <div class="exp-groups">
+      <div class="exp-group">
+        <span class="eyebrow">Technical</span>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span>
+          <span class="chip">Power BI</span><span class="chip">Tableau</span>
+          <span class="chip">Excel Modeling</span><span class="chip">PowerPoint</span>
+        </div>
+      </div>
+      <div class="exp-group">
+        <span class="eyebrow">FP&amp;A &amp; Advisory</span>
+        <div class="chip-row">
+          <span class="chip">Valuation</span><span class="chip">Due Diligence</span>
+          <span class="chip">M&amp;A Analysis</span><span class="chip">Financial Forecasting</span>
+          <span class="chip">Portfolio Analysis</span><span class="chip">Market Research</span>
+        </div>
+      </div>
+      <div class="exp-group">
+        <span class="eyebrow">Languages</span>
+        <div class="lang-row"><span>Vietnamese</span><span class="lang-level">Native</span></div>
+        <div class="lang-row"><span>English</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-row"><span>Mandarin</span><span class="lang-level">HSK3 · In Progress</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Recognition</span>
+      <h2>Distinctions &amp; Projects</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="icon">🏆</div>
+        <h3>Harvey Norman Business Competition — Consolation Prize</h3>
+        <p>Led a 5-person team developing financial models and operational strategies to improve the financial resilience of a furniture brand during COVID-19. Awarded for the proposed business partnership and financial recovery strategy.</p>
+      </div>
+      <div class="proj-card">
+        <div class="icon">📊</div>
+        <h3>Global Salary Analysis Project</h3>
+        <p>Led a 4-member team researching global salary data to identify high-income industries and geographic trends. Used Bloomberg, Python, and R for data collection; presented findings via Power BI and PowerPoint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="connect" id="connect">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--brass-soft);">Let's Connect</span>
+    <h2>Open to conversations on impact investing and inclusive development finance.</h2>
+    <div class="loc">Ho Chi Minh City, Vietnam</div>
+    <div class="connect-links">
+      <a href="mailto:phqa8899@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/anhque-pham/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="phone">+84 36 306 2691</div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  reveals.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
